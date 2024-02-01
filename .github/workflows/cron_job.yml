@@ -1,0 +1,26 @@
+name: Execute smart home cron
+
+on:
+  schedule:
+    - cron: '* * * * *'
+
+jobs:
+  process_and_notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests pandas
+      - name: Run script
+        run: python air-quality-hook.py
+        env:
+            AWAIR_BEARER: ${{ secrets.AWAIR_BEARER }}
+            AWAIR_DEVICE_ID: ${{ secrets.AWAIR_DEVICE_ID }}
+            IFTTT_AWAIR_PM_EVENT: ${{ secrets.IFTTT_AWAIR_PM_EVENT }}
+            IFTTT_WEBHOOKS_KEY: ${{ secrets.IFTTT_WEBHOOKS_KEY }}
