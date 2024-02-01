@@ -5,7 +5,8 @@ import requests
 
 BEARER = os.environ("AWAIR_BEARER")
 DEVICE_ID = os.environ("AWAIR_DEVICE_ID")
-EVENT_NAME = os.environ("IFTTT_AWAIR_PM_EVENT")
+PM_HI_EVENT_NAME = os.environ("IFTTT_AWAIR_PM_HI_EVENT")
+PM_LOW_EVENT_NAME = os.environ("IFTTT_AWAIR_PM_LOP)EVENT")
 WEBHOOKS_KEY = os.environ("IFTTT_WEBHOOKS_KEY")
 
 
@@ -25,14 +26,16 @@ def check_pm(data):
     return False
 
 
-def send_webhook():
+def send_webhook(high=True):
+    if high:
+        event_name = PM_HI_EVENT_NAME
+    else:
+        event_name = PM_LOW_EVENT_NAME
     return requests.post(
-        f"http://maker.ifttt.com/trigger/{EVENT_NAME}/json/with/key/{WEBHOOKS_KEY}",
+        f"http://maker.ifttt.com/trigger/{event_name}/json/with/key/{WEBHOOKS_KEY}",
         headers={"Content-Type": "application/json"},
     )
 
 
 def main():
-    data = query_endpoint()
-    if check_pm(data):
-        return send_webhook()
+    send_webhook(high=check_pm(query_endpoint()))

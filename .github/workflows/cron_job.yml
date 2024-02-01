@@ -22,5 +22,6 @@ jobs:
         env:
             AWAIR_BEARER: ${{ secrets.AWAIR_BEARER }}
             AWAIR_DEVICE_ID: ${{ secrets.AWAIR_DEVICE_ID }}
-            IFTTT_AWAIR_PM_EVENT: ${{ secrets.IFTTT_AWAIR_PM_EVENT }}
+            IFTTT_AWAIR_PM_HI_EVENT: ${{ secrets.IFTTT_AWAIR_PM_HI_EVENT }}
+            IFTTT_AWAIR_PM_LOW_EVENT: ${{ secrets.IFTTT_AWAIR_PM_LOW_EVENT }}
             IFTTT_WEBHOOKS_KEY: ${{ secrets.IFTTT_WEBHOOKS_KEY }}
