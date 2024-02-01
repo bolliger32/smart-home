@@ -6,7 +6,7 @@ import requests
 BEARER = os.environ["AWAIR_BEARER"]
 DEVICE_ID = os.environ["AWAIR_DEVICE_ID"]
 PM_HI_EVENT_NAME = os.environ["IFTTT_AWAIR_PM_HI_EVENT"]
-PM_LOW_EVENT_NAME = os.environ["IFTTT_AWAIR_PM_LOP)EVENT"]
+PM_LOW_EVENT_NAME = os.environ["IFTTT_AWAIR_PM_LOW_EVENT"]
 WEBHOOKS_KEY = os.environ["IFTTT_WEBHOOKS_KEY"]
 
 
