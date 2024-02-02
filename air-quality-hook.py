@@ -32,8 +32,7 @@ def send_webhook(high: bool = True) -> requests.Request:
     else:
         event_name = PM_LOW_EVENT_NAME
     return requests.post(
-        f"http://maker.ifttt.com/trigger/{event_name}/json/with/key/{WEBHOOKS_KEY}",
-        headers={"Content-Type": "application/json"},
+        f"http://maker.ifttt.com/trigger/{event_name}/with/key/{WEBHOOKS_KEY}"
     )
 
 
