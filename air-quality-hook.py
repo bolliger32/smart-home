@@ -40,3 +40,7 @@ def send_webhook(high: bool = True) -> requests.Request:
 def main():
     res = send_webhook(high=check_pm(query_endpoint()))
     print(res.content)
+
+
+if __name__ == "__main__":
+    main()
