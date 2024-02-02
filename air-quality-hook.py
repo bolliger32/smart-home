@@ -1,3 +1,6 @@
+"""A script that gets executed as a Google Cloud Function every minute on the minute,
+as scheduled by Google Cloud Scheduler."""
+
 import os
 
 import pandas as pd
@@ -36,10 +39,5 @@ def send_webhook(high: bool = True) -> requests.Request:
     )
 
 
-def main():
-    res = send_webhook(high=check_pm(query_endpoint()))
-    print(res.content)
-
-
-if __name__ == "__main__":
-    main()
+def execute_smart_home():
+    send_webhook(high=check_pm(query_endpoint()))
